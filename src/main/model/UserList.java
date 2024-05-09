@@ -5,7 +5,7 @@ import java.util.List;
 
 public class UserList {
 
-    private int userListCounter = 0;
+    private static int userListCounter = 0;
     private int userListId;
 
     private int userId;

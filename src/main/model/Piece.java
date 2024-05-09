@@ -1,33 +1,38 @@
 package main.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import main.util.DatabaseManager;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 
 public class Piece {
 
     private static int pieceCounter = 0;
 
-    private int id = pieceCounter++;
+    private int piece_id;
     private String genre;
     private String name;
     private String description;
     private String minAge;
     private String releaseDate;
     private String duration;
-    private ArrayList<String> actors;
+    private String director;
     private String recommendationPercentage;
     private String trailer;
     private boolean downloadable;
 
-    public Piece(String genre, String name, String description, String minAge, String releaseDate, String duration,
+    public Piece(String genre, String name, String description, String minAge, String releaseDate, String duration, String director,
             String recommendationPercentage, String trailer, boolean downloadable) {
-        this.id = pieceCounter++;
+        this.piece_id = pieceCounter++;
         this.genre = genre;
         this.name = name;
         this.description = description;
         this.minAge = minAge;
         this.releaseDate = releaseDate;
         this.duration = duration;
+        this.director = director;
         this.recommendationPercentage = recommendationPercentage;
         this.trailer = trailer;
         this.downloadable = downloadable;
@@ -41,12 +46,12 @@ public class Piece {
         this.name = name;
     }
 
-    public int getId() {
-        return id;
+    public int getPiece_id() {
+        return piece_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPiece_id(int piece_id) {
+        this.piece_id = piece_id;
     }
 
     public String getGenre() {
@@ -89,20 +94,20 @@ public class Piece {
         this.duration = duration;
     }
 
-    public List<String> getActors() {
-        return actors;
-    }
-
-    public void addActors(String actor) {
-        this.actors.add(actor);
-    }
-
     public String getRecommendationPercentage() {
         return recommendationPercentage;
     }
 
     public void setRecommendationPercentage(String recommendationPercentage) {
         this.recommendationPercentage = recommendationPercentage;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
     }
 
     public String getTrailer() {
@@ -119,6 +124,26 @@ public class Piece {
 
     public void setDownloadable(boolean downloadable) {
         this.downloadable = downloadable;
+    }
+
+    public void savePiece() {
+        try (Connection connection = DatabaseManager.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Piece (id, genre, name, description, minAge, releaseDate, duration, recommendationPercentage, trailer, downloadable, director) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+            preparedStatement.setInt(1, piece_id);
+            preparedStatement.setString(2, genre);
+            preparedStatement.setString(3, name);
+            preparedStatement.setString(4, description);
+            preparedStatement.setString(5, minAge);
+            preparedStatement.setString(6, releaseDate);
+            preparedStatement.setString(7, duration);
+            preparedStatement.setString(8, recommendationPercentage);
+            preparedStatement.setString(9, trailer);
+            preparedStatement.setBoolean(10, downloadable);
+            preparedStatement.setString(11, director);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     
 }

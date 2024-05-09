@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.LoginController">
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="323.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text fill="WHITE" layoutX="61.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connection page">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="424.0" prefWidth="407.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="256.0" layoutY="98.0">
+               <image>
+                  <Image url="@../img/lock_icon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="101.0" layoutY="209.0" text="login" textFill="#ffc900">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="83.0" layoutY="276.0" text="password" textFill="#ffc900">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Label>
+            <Label layoutX="224.0" layoutY="423.0" text="No account yet ?" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="subscription_btn" layoutX="234.0" layoutY="463.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #ffc900;" text="Create account">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="connection_btn" layoutX="235.0" layoutY="329.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: #ffc900;" text="Login">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <TextField fx:id="login" layoutX="202.0" layoutY="210.0" promptText="Login">
+               <font>
+                  <Font size="15.0" />
+               </font></TextField>
+            <PasswordField fx:id="password" layoutX="202.0" layoutY="277.0" promptText="Password">
+               <font>
+                  <Font size="15.0" />
+               </font></PasswordField>
+            <Label fx:id="wrongLogin" layoutX="225.0" layoutY="376.0" prefHeight="31.0" prefWidth="140.0" textFill="RED" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

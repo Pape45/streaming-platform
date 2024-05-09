@@ -1,5 +1,7 @@
 package main.util;
 
+import main.model.User;
+
 import java.sql.*;
 
 public class DatabaseManager {
@@ -87,7 +89,7 @@ public class DatabaseManager {
         return userID;
     }
 
-    public static boolean isValidUser(String login, String password) {
+    public static boolean isValidCredentials(String login, String password) {
         boolean isValidUser = false;
 
         try (ResultSet resultSet = executeQuery("SELECT * FROM user WHERE login = ? AND password = ?", login, password)) {
@@ -103,4 +105,25 @@ public class DatabaseManager {
 
         return isValidUser;
     }
+
+    public static User getUser(String login) {
+        try (ResultSet resultSet = executeQuery("SELECT * FROM user WHERE login = ?", login)) {
+            try {
+                if (resultSet.next()) {
+                    return new User(resultSet.getString("login"), resultSet.getString("password"), resultSet.getString("birthday"), resultSet.getString("rib"), resultSet.getInt("subscriptionId"));
+                }
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
+    }
+
+    public static void changePassword(String login, String newPassword) {
+        executeUpdate("UPDATE user SET password = ? WHERE login = ?", newPassword, login);
+    }
+
 }
