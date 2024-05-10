@@ -15,7 +15,7 @@
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="323.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="WHITE" layoutX="61.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connection page">
+            <Text fill="WHITE" layoutX="89.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connection">
                <font>
                   <Font name="System Bold" size="30.0" />
                </font>
@@ -26,43 +26,53 @@
    <center>
       <AnchorPane prefHeight="424.0" prefWidth="407.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="256.0" layoutY="98.0">
+            <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="234.0" layoutY="101.0">
                <image>
                   <Image url="@../img/lock_icon.png" />
                </image>
             </ImageView>
-            <Label layoutX="101.0" layoutY="209.0" text="login" textFill="#ffc900">
+            <Label layoutX="55.0" layoutY="213.0" text="login" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="83.0" layoutY="276.0" text="password" textFill="#ffc900">
+            <Label layoutX="55.0" layoutY="279.0" text="password" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="224.0" layoutY="423.0" text="No account yet ?" textFill="WHITE">
+            <Label layoutX="295.0" layoutY="437.0" text="No account yet ?" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Button fx:id="subscription_btn" layoutX="234.0" layoutY="463.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #ffc900;" text="Create account">
+            <Button fx:id="subscription_btn" layoutX="306.0" layoutY="488.0" mnemonicParsing="false" onMouseClicked="#userRegister" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #ffc900;" text="Create account" textFill="#170000">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font></Button>
-            <Button fx:id="connection_btn" layoutX="235.0" layoutY="329.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: #ffc900;" text="Login">
+            <Button fx:id="connection_btn" layoutX="213.0" layoutY="335.0" mnemonicParsing="false" onMouseClicked="#userLogin" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: #ffc900;" text="Login">
                <font>
-                  <Font size="15.0" />
+                  <Font name="System Bold" size="15.0" />
                </font></Button>
-            <TextField fx:id="login" layoutX="202.0" layoutY="210.0" promptText="Login">
+            <TextField fx:id="login" layoutX="180.0" layoutY="213.0" promptText="Login">
                <font>
                   <Font size="15.0" />
                </font></TextField>
-            <PasswordField fx:id="password" layoutX="202.0" layoutY="277.0" promptText="Password">
+            <PasswordField fx:id="password" layoutX="180.0" layoutY="280.0" promptText="Password">
                <font>
                   <Font size="15.0" />
                </font></PasswordField>
-            <Label fx:id="wrongLogin" layoutX="225.0" layoutY="376.0" prefHeight="31.0" prefWidth="140.0" textFill="RED" />
+            <Label fx:id="wrongLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="181.0" layoutY="381.0" prefHeight="31.0" prefWidth="192.0" textFill="RED" />
+            <Label layoutX="53.0" layoutY="437.0" text="Forgotten password ?" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="reset_btn" layoutX="85.0" layoutY="488.0" mnemonicParsing="false" onMouseClicked="#userReset" prefHeight="32.0" prefWidth="118.0" style="-fx-background-color: #ffc900;" text="Reset password" textFill="#170000">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>

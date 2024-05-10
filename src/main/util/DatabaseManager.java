@@ -1,8 +1,11 @@
 package main.util;
 
+import main.model.Profile;
 import main.model.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseManager {
     private static final String URL = "jdbc:mysql://localhost:3306/streaming_platform";
@@ -124,6 +127,92 @@ public class DatabaseManager {
 
     public static void changePassword(String login, String newPassword) {
         executeUpdate("UPDATE user SET password = ? WHERE login = ?", newPassword, login);
+    }
+
+    public void createChildProfile(int userId) {
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "INSERT INTO Profile (userId, profileName, isChild) VALUES (?, ?, ?)")) {
+            statement.setInt(1, userId);
+            statement.setString(2, "Child Profile");
+            statement.setBoolean(3, true);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static boolean hasProfiles(int userId) {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "SELECT COUNT(*) FROM Profile WHERE userId = ?")) {
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void createProfile(int userId, String profileName, boolean isChild) {
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "INSERT INTO Profile (userId, profileName, isChild) VALUES (?, ?, ?)")) {
+            statement.setInt(1, userId);
+            statement.setString(2, profileName);
+            statement.setBoolean(3, isChild);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void deleteProfile(int userId, String profileName) {
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "DELETE FROM Profile WHERE userId = ? AND profileName = ?")) {
+            statement.setInt(1, userId);
+            statement.setString(2, profileName);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void updateProfile(int userId, String profileName, String newProfileName, boolean isChild) {
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "UPDATE Profile SET profileName = ?, isChild = ? WHERE userId = ? AND profileName = ?")) {
+            statement.setString(1, newProfileName);
+            statement.setBoolean(2, isChild);
+            statement.setInt(3, userId);
+            statement.setString(4, profileName);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static List<Profile> getProfiles(int userId) {
+        List<Profile> profiles = new ArrayList<>();
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(
+                     "SELECT * FROM Profile WHERE userId = ?")) {
+            statement.setInt(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                String profileName = resultSet.getString("profileName");
+                boolean isChild = resultSet.getBoolean("isChild");
+                profiles.add(new Profile(userId, profileName, isChild));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return profiles;
     }
 
 }

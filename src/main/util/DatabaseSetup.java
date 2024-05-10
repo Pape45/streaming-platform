@@ -24,34 +24,38 @@ public class DatabaseSetup {
                     "    FOREIGN KEY (subscriptionId) REFERENCES Subscription(subscriptionId)" +
                     ");" +
                     "CREATE TABLE Piece (" +
-                    "    id INT PRIMARY KEY AUTO_INCREMENT," +
+                    "    id INT PRIMARY KEY," +
                     "    genre VARCHAR(255)," +
                     "    name VARCHAR(255)," +
                     "    description TEXT," +
+                    "    director VARCHAR(255)," +
                     "    minAge INT," +
-                    "    releaseDate DATE," +
-                    "    duration INT," +
-                    "    recommendationPercentage INT," +
+                    "    releaseDate TEXT," +
+                    "    duration TEXT," +
+                    "    recommendationPercentage TEXT," +
                     "    trailer VARCHAR(255)," +
                     "    downloadable BOOLEAN" +
                     ");" +
-                    "CREATE TABLE Watch (" +
+                    "CREATE TABLE Watching (" +
                     "    watchId INT PRIMARY KEY AUTO_INCREMENT," +
                     "    userId INT," +
                     "    pieceId INT," +
+                    "    position INT," +
                     "    FOREIGN KEY (userId) REFERENCES User(userId)," +
                     "    FOREIGN KEY (pieceId) REFERENCES Piece(id)" +
                     ");" +
                     "CREATE TABLE Series (" +
-                    "    id INT PRIMARY KEY AUTO_INCREMENT," +
+                    "    id INT PRIMARY KEY," +
+                    "    actors VARCHAR(255)," +
                     "    FOREIGN KEY (id) REFERENCES Piece(id)" +
                     ");" +
                     "CREATE TABLE Movies (" +
                     "    id INT PRIMARY KEY," +
+                    "    actors VARCHAR(255)," +
                     "    FOREIGN KEY (id) REFERENCES Piece(id)" +
                     ");" +
                     "CREATE TABLE Documentary (" +
-                    "    id INT PRIMARY KEY AUTO_INCREMENT," +
+                    "    id INT PRIMARY KEY," +
                     "    FOREIGN KEY (id) REFERENCES Piece(id)" +
                     ");" +
                     "CREATE TABLE Season (" +
@@ -79,6 +83,13 @@ public class DatabaseSetup {
                     "    userListId INT PRIMARY KEY AUTO_INCREMENT," +
                     "    userId INT," +
                     "    listName VARCHAR(255)," +
+                    "    FOREIGN KEY (userId) REFERENCES User(userId)" +
+                    ");" +
+                    "CREATE TABLE Profile (" +
+                    "    profileId INT PRIMARY KEY AUTO_INCREMENT," +
+                    "    userId INT," +
+                    "    profileName VARCHAR(255)," +
+                    "    isChild BOOLEAN," +
                     "    FOREIGN KEY (userId) REFERENCES User(userId)" +
                     ");";
 
