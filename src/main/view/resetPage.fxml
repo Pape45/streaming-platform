@@ -8,45 +8,36 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ResetPageController">
-   <left>
-      <AnchorPane prefHeight="600.0" prefWidth="323.0" BorderPane.alignment="CENTER">
-         <children>
-            <Text fill="WHITE" layoutX="61.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset password">
-               <font>
-                  <Font name="System Bold" size="30.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-   </left>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ResetPageController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="248.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="63.0" fitWidth="74.0" layoutX="514.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/lock_icon.png" />
                </image>
             </ImageView>
-            <TextField fx:id="email" layoutX="200.0" layoutY="229.0" promptText="Email" />
-            <Label layoutX="93.0" layoutY="227.0" text="Email" textFill="WHITE">
+            <TextField fx:id="email" layoutX="434.0" layoutY="342.0" promptText="Email">
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
+               </font></TextField>
+            <Label layoutX="327.0" layoutY="343.0" text="Email" textFill="WHITE">
+               <font>
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Button fx:id="reset_btn" layoutX="223.0" layoutY="312.0" mnemonicParsing="false" onMouseClicked="#resetPassword" prefHeight="30.0" prefWidth="113.0" style="-fx-background-color: #ffc900;" text="Reset password">
+            <Button fx:id="reset_btn" layoutX="468.0" layoutY="417.0" mnemonicParsing="false" onMouseClicked="#resetPassword" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #ffc900;" text="Reset password">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="reset_btn1" layoutX="213.0" layoutY="408.0" mnemonicParsing="false" onMouseClicked="#userLogin" prefHeight="30.0" prefWidth="133.0" style="-fx-background-color: #ffc900;" text="Go to login page">
+            <Button fx:id="reset_btn1" layoutX="468.0" layoutY="564.0" mnemonicParsing="false" onMouseClicked="#userLogin" prefHeight="35.0" prefWidth="154.0" style="-fx-background-color: #ffc900;" text="Go to login page">
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Label fx:id="wrongReset" alignment="CENTER" contentDisplay="CENTER" layoutX="190.0" layoutY="277.0" prefHeight="17.0" prefWidth="176.0" textFill="RED" />
+            <Label fx:id="wrongReset" alignment="CENTER" contentDisplay="CENTER" layoutX="434.0" layoutY="487.0" prefHeight="17.0" prefWidth="222.0" textFill="RED" />
          </children>
       </AnchorPane>
    </center>

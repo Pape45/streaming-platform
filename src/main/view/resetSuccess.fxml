@@ -6,18 +6,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ResetSuccessController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.ResetSuccessController">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#529464" layoutX="169.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You successfully changed your password !">
+            <Text fill="#529464" layoutX="234.0" layoutY="308.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You successfully changed your password !">
                <font>
-                  <Font name="System Bold" size="26.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <Button fx:id="login_btn" layoutX="356.0" layoutY="255.0" mnemonicParsing="false" onMouseClicked="#userLogin" style="-fx-background-color: #ffc900;" text="Login">
+            <Button fx:id="login_btn" layoutX="450.0" layoutY="386.0" mnemonicParsing="false" onMouseClicked="#userLogin" style="-fx-background-color: #ffc900;" text="Login">
                <font>
-                  <Font name="System Bold" size="24.0" />
+                  <Font name="System Bold" size="27.0" />
                </font>
             </Button>
          </children>
