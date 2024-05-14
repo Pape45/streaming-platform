@@ -34,6 +34,10 @@ public class CreateProfileController {
             createProfile.setLayoutY(createProfile.getLayoutY() - 50);
             errorLabel.setLayoutY(errorLabel.getLayoutY() - 50);
         }
+
+        if (profiles.isEmpty()) {
+            cancel.setDisable(true);
+        }
     }
 
     public void logout() {
@@ -60,8 +64,9 @@ public class CreateProfileController {
         if (nameExists) {
             errorLabel.setText("Profile name already exists.");
         } else {
-            Profile newProfile = new Profile(userId, newProfileName, childProfile.isSelected());
-            DatabaseManager.createProfile(newProfile.getUserId(), newProfile.getProfileName(), newProfile.isChild());
+            String profileImage = childProfile.isSelected() ? "child.png" : "profile.png";
+            Profile newProfile = new Profile(userId, newProfileName, profileImage, childProfile.isSelected());
+            DatabaseManager.createProfile(newProfile.getUserId(), newProfile.getProfileName(), newProfile.getProfileImage(), newProfile.isChild());
             Main m = new Main();
             m.changeScene("chooseProfile");
         }

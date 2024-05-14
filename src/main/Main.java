@@ -17,6 +17,7 @@ public class Main extends Application {
 
     private static Stage stg;
     private static User currentUser;
+    private static Profile currentProfile;
 
     public static void main(String[] args) {
         DatabaseSetup.setupDatabase();
@@ -49,7 +50,7 @@ public class Main extends Application {
         theDarkKnightActors.add("Maggie Gyllenhaal");
 
         Movies theDarkKnight = new Movies("Action", "The Dark Knight",
-                "Batman faces the Joker, who is causing chaos in Gotham City", "13", "2008", "2h32m", "Christopher Nolan",
+                "Batman faces the Joker, who is causing chaos in Gotham City", "13", "2008", "2h32m", "Christopher Nolan", "theDarkKnight.jpg",
                 theDarkKnightActors, "94%", "https://www.youtube.com/watch?v=EXeTwQWrcwY", true);
 
         ArrayList<String> inceptionActors = new ArrayList<>();
@@ -58,8 +59,8 @@ public class Main extends Application {
         inceptionActors.add("Ellen Page");
         inceptionActors.add("Tom Hardy");
 
-        Movies inception = new Movies("Action", "Inception",
-                "A thief who enters the dreams of others to steal their secrets", "13", "2010", "2h28m", "Christopher Nolan",
+        Movies inception = new Movies("Sci-Fi", "Inception",
+                "A thief who enters the dreams of others to steal their secrets", "13", "2010", "2h28m", "Christopher Nolan", "inception.jpg",
                 inceptionActors, "87%", "https://www.youtube.com/watch?v=YoHD9XEInc0", true);
 
         ArrayList <String> homeAloneActors = new ArrayList<>();
@@ -68,7 +69,8 @@ public class Main extends Application {
         homeAloneActors.add("Daniel Stern");
         homeAloneActors.add("Catherine O'Hara");
 
-        Movies homeAlone = new Movies("Comedy", "Home Alone","An eight-year-old troublemaker, mistakenly left home alone, must defend his home against a pair of burglars on Christmas Eve.", "7", "1990", "1h43m", "Chris Columbus", homeAloneActors, "80%", "https://www.youtube.com/watch?v=CK2Btk6Ybm0", true);
+        Movies homeAlone = new Movies("Comedy", "Home Alone","An eight-year-old troublemaker, mistakenly left home alone, must defend his home against a pair of burglars on Christmas Eve.", "7", "1990", "1h43m", "Chris Columbus", "homealone.jpg", homeAloneActors, "80%",
+                "https://www.youtube.com/watch?v=CK2Btk6Ybm0", true);
 
         ArrayList <String> breakingBadActors = new ArrayList<>();
         breakingBadActors.add("Bryan Cranston");
@@ -77,7 +79,7 @@ public class Main extends Application {
         breakingBadActors.add("Dean Norris");
 
         Series breakingBad = new Series("Drama", "Breaking Bad",
-                "A high school chemistry teacher turned meth producer", "18", "2008", "5 seasons", "Vince Gilligan",breakingBadActors, "100%",
+                "A high school chemistry teacher turned meth producer", "18", "2008", "5 seasons", "Vince Gilligan", "breakingbad.jpeg", breakingBadActors, "96%",
                 "https://www.youtube.com/watch?v=HhesaQXLuRY", true);
 
         ArrayList <String> theMandalorianActors = new ArrayList<>();
@@ -87,9 +89,8 @@ public class Main extends Application {
         theMandalorianActors.add("Carl Weathers");
 
         Series theMandalorian = new Series("Sci-Fi", "The Mandalorian",
-                "A lone bounty hunter in the outer reaches of the galaxy", "13", "2019", "2 seasons", "Jon Favreau", theMandalorianActors, "93%",
+                "A lone gunfighter makes his way through the outer reaches of the galaxy", "13", "2019", "2 seasons", "Jon Favreau", "themandalorian.jpg", theMandalorianActors, "93%",
                 "https://www.youtube.com/watch?v=eW7Twd85m2g", true);
-
 
         ArrayList <String> familyReunionActors = new ArrayList<>();
         familyReunionActors.add("Tia Mowry-Hardrict");
@@ -98,17 +99,27 @@ public class Main extends Application {
         familyReunionActors.add("Isaiah Russell-Bailey");
 
         Series familyReunion = new Series("Comedy", "Family Reunion",
-                "A family from Seattle moves to the South", "7", "2019", "3 seasons", "Meg DeLoatch", familyReunionActors, "90%",
+                "A family from Seattle moves to the South", "7", "2019", "3 seasons", "Meg DeLoatch", "familyreunion.jpeg", familyReunionActors, "90%",
                 "https://www.youtube.com/watch?v=kMuC1TJaCKE", false);
 
         Documentary planetEarth = new Documentary("Documentary", "Planet Earth", "A documentary series about the planet Earth", "13", "2006",
-                "1 season", "David Attenborough", "98%", "https://www.youtube.com/watch?v=aETNYyrqNYE", true);
+                "1 season", "planetearth.jpg", "David Attenborough", "98%", "https://www.youtube.com/watch?v=aETNYyrqNYE", true);
 
         Documentary cosmos = new Documentary("Documentary", "Cosmos: A Spacetime Odyssey", "A documentary series about the universe", "13", "2014", "1 season",
-                "Neil deGrasse Tyson", "95%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", true);
+                "cosmos.jpg", "Neil deGrasse Tyson", "95%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", true);
 
         Documentary catPeople = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "7", "2021", "1 season",
-                "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
+                "catpeople.jpg", "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
+        Documentary catPeople2 = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "19", "2021", "1 season",
+                "catpeople.jpg", "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
+
+        Documentary catPeople3 = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "19", "2021", "1 season",
+                "catpeople.jpg", "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
+        Documentary catPeople4 = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "19", "2021", "1 season",
+                "catpeople.jpg", "Glen Zipper", "50%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
+        Documentary catPeople5 = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "19", "2021", "1 season",
+                "catpeople.jpg", "Glen Zipper", "25%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
+
 
         theDarkKnight.saveMovie();
         inception.saveMovie();
@@ -119,6 +130,10 @@ public class Main extends Application {
         planetEarth.saveDocumentary();
         cosmos.saveDocumentary();
         catPeople.saveDocumentary();
+        catPeople2.saveDocumentary();
+        catPeople3.saveDocumentary();
+        catPeople4.saveDocumentary();
+        catPeople5.saveDocumentary();
 
         Season breakingBadSeason1 = new Season(7, breakingBad.getPiece_id());
         Season breakingBadSeason2 = new Season(13, breakingBad.getPiece_id());
@@ -174,9 +189,13 @@ public class Main extends Application {
         try {
             stg = primaryStage;
             stg.setResizable(false);
+            stg.setWidth(1000);
+            stg.setHeight(800);
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("view/login.fxml")));
+            Scene scene = new Scene(root);
+            scene.getStylesheets().add(getClass().getResource("view/style.css").toExternalForm());
             primaryStage.setTitle("FlixNet");
-            primaryStage.setScene(new Scene(root, 800, 600));
+            primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -200,5 +219,13 @@ public class Main extends Application {
 
     public static User getCurrentUser() {
         return currentUser;
+    }
+
+    public static Profile getCurrentProfile() {
+        return currentProfile;
+    }
+
+    public static void setCurrentProfile(Profile currentProfile) {
+        Main.currentProfile = currentProfile;
     }
 }

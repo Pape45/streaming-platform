@@ -9,9 +9,9 @@ import java.sql.SQLException;
 public class Documentary extends Piece {
 
     public Documentary(String genre, String name, String description,
-            String minAge, String releaseDate, String duration, String director,
+            String minAge, String releaseDate, String duration, String poster, String director,
             String recommendationPercentage, String trailer, boolean downloadable) {
-        super(genre, name, description, minAge, releaseDate, duration, director, recommendationPercentage, trailer,
+        super(genre, name, description, minAge, releaseDate, duration, director, poster, recommendationPercentage, trailer,
                 downloadable);
     }
 

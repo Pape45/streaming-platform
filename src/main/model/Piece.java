@@ -19,12 +19,12 @@ public class Piece {
     private String releaseDate;
     private String duration;
     private String director;
+    private String poster;
     private String recommendationPercentage;
     private String trailer;
     private boolean downloadable;
 
-    public Piece(String genre, String name, String description, String minAge, String releaseDate, String duration, String director,
-            String recommendationPercentage, String trailer, boolean downloadable) {
+    public Piece(String genre, String name, String description, String minAge, String releaseDate, String duration, String director, String poster, String recommendationPercentage, String trailer, boolean downloadable) {
         this.piece_id = pieceCounter++;
         this.genre = genre;
         this.name = name;
@@ -33,6 +33,7 @@ public class Piece {
         this.releaseDate = releaseDate;
         this.duration = duration;
         this.director = director;
+        this.poster = poster;
         this.recommendationPercentage = recommendationPercentage;
         this.trailer = trailer;
         this.downloadable = downloadable;
@@ -126,9 +127,17 @@ public class Piece {
         this.downloadable = downloadable;
     }
 
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
     public void savePiece() {
         try (Connection connection = DatabaseManager.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Piece (id, genre, name, description, minAge, releaseDate, duration, recommendationPercentage, trailer, downloadable, director) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Piece (id, genre, name, description, minAge, releaseDate, duration, poster, recommendationPercentage, trailer, downloadable, director) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
             preparedStatement.setInt(1, piece_id);
             preparedStatement.setString(2, genre);
             preparedStatement.setString(3, name);
@@ -136,14 +145,17 @@ public class Piece {
             preparedStatement.setString(5, minAge);
             preparedStatement.setString(6, releaseDate);
             preparedStatement.setString(7, duration);
-            preparedStatement.setString(8, recommendationPercentage);
-            preparedStatement.setString(9, trailer);
-            preparedStatement.setBoolean(10, downloadable);
-            preparedStatement.setString(11, director);
+            preparedStatement.setString(8, poster);
+            preparedStatement.setString(9, recommendationPercentage);
+            preparedStatement.setString(10, trailer);
+            preparedStatement.setBoolean(11, downloadable);
+            preparedStatement.setString(12, director);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    
+
+
+
 }

@@ -12,9 +12,9 @@ public class Movies extends Piece {
     private ArrayList<String> actors;
 
     public Movies(String genre, String name, String description,
-            String minAge, String releaseDate, String duration, String director, ArrayList<String> actors,
+            String minAge, String releaseDate, String duration, String director, String poster, ArrayList<String> actors,
             String recommendationPercentage, String trailer, boolean downloadable) {
-        super(genre, name, description, minAge, releaseDate, duration, director, recommendationPercentage, trailer,
+        super(genre, name, description, minAge, releaseDate, duration, director, poster, recommendationPercentage, trailer,
                 downloadable);
         this.actors = actors;
     }

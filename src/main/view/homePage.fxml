@@ -44,23 +44,23 @@
    <left>
       <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="323.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="movies_btn" layoutX="38.0" layoutY="357.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="248.0" style="-fx-background-color: #ffc900;" text="Movies">
+            <Button fx:id="movies_btn" layoutX="53.0" layoutY="364.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="248.0" style="-fx-background-color: #ffc900;" text="Movies">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="series_btn" layoutX="38.0" layoutY="435.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="248.0" style="-fx-background-color: #ffc900;" text="Series">
+            <Button fx:id="series_btn" layoutX="53.0" layoutY="442.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="248.0" style="-fx-background-color: #ffc900;" text="Series">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <Button fx:id="documentaries_btn" layoutX="38.0" layoutY="510.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="248.0" style="-fx-background-color: #ffc900;" text="Documentaries">
+            <Button fx:id="documentaries_btn" layoutX="53.0" layoutY="517.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="248.0" style="-fx-background-color: #ffc900;" text="Documentaries">
                <font>
                   <Font name="System Bold" size="21.0" />
                </font>
             </Button>
-            <VBox fx:id="profileBox" layoutX="62.0" layoutY="84.0" prefHeight="179.0" prefWidth="201.0" />
-            <Button fx:id="logout_btn" layoutX="122.0" layoutY="642.0" mnemonicParsing="false" onMouseClicked="#logout" style="-fx-background-color: #ffc900;" text="Log out">
+            <VBox fx:id="profileBox" layoutX="77.0" layoutY="91.0" prefHeight="179.0" prefWidth="201.0" />
+            <Button fx:id="logout_btn" layoutX="137.0" layoutY="649.0" mnemonicParsing="false" onMouseClicked="#logout" style="-fx-background-color: #ffc900;" text="Log out">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

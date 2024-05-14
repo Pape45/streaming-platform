@@ -37,7 +37,7 @@ public class LoginController {
             if (DatabaseManager.hasProfiles(DatabaseManager.getUserID(login.getText()))) {
                 m.changeScene("chooseProfile");
             } else {
-                m.changeScene("firstTimeCreateProfile");
+                m.changeScene("createProfile");
             }
         } else {
             wrongLogin.setText("Wrong login or password");

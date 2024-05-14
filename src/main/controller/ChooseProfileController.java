@@ -57,33 +57,27 @@ public class ChooseProfileController {
             }
         });
 
+        profileGrid.setVgap(30);
+
         for (int i = 0; i < profiles.size(); i++) {
             Profile profile = profiles.get(i);
 
-            Image image;
-            if (profile.isChild()) {
-                image = new Image("file:src/main/img/child.png");
-            } else {
-                image = new Image("file:src/main/img/profile.png");
-            }
+            Image image = new Image("file:src/main/img/" + profile.getProfileImage());
 
             ImageView imageView = new ImageView(image);
-            imageView.setFitWidth(100);
-            imageView.setFitHeight(100);
+            imageView.setFitWidth(110);
+            imageView.setFitHeight(110);
 
             Label label = new Label(profile.getProfileName());
             label.setStyle("-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;");
             VBox vBox = new VBox(imageView, label);
-            vBox.setSpacing(15);
+            vBox.setSpacing(20);
             vBox.setAlignment(Pos.CENTER);
 
             vBox.setOnMouseClicked(event -> {
+                Main.setCurrentProfile(profile);
                 Main m = new Main();
-                if (profile.isChild()) {
-                    m.changeScene("kidsPage");
-                } else {
                     m.changeScene("homePage");
-                }
             });
 
             profileGrid.add(vBox, i % 2, i / 2);
