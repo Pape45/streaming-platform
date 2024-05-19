@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="streaming_platform:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/streaming_platform_jar</output-path>
+    <root id="archive" name="streaming_platform.jar">
+      <element id="module-output" name="streaming_platform" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/mysql-connector-j-8.4.0/mysql-connector-j-8.4.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/javafx-sdk-22.0.1/lib/javafx-swt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/javafx-sdk-22.0.1/lib/javafx.web.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/javafx-sdk-22.0.1/lib/javafx.base.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/javafx-sdk-22.0.1/lib/javafx.fxml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/javafx-sdk-22.0.1/lib/javafx.media.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/javafx-sdk-22.0.1/lib/javafx.swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/javafx-sdk-22.0.1/lib/javafx.controls.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Java Libraries/javafx-sdk-22.0.1/lib/javafx.graphics.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
