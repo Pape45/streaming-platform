@@ -10,9 +10,9 @@ public class Documentary extends Piece {
 
     public Documentary(String genre, String name, String description,
             String minAge, String releaseDate, String duration, String poster, String director,
-            String recommendationPercentage, String trailer, boolean downloadable) {
+            String recommendationPercentage, String trailer, boolean downloadable, String videoUrl) {
         super(genre, name, description, minAge, releaseDate, duration, director, poster, recommendationPercentage, trailer,
-                downloadable);
+                downloadable, videoUrl);
     }
 
     public void saveDocumentary() {

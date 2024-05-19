@@ -15,35 +15,7 @@ public class Evaluation {
         this.evaluationId = evaluationCounter++;
     }
 
-    public int getScore() {
-        return score;
-    }
-
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public int getEvaluationId() {
-        return evaluationId;
-    }
-
-    public void setEvaluationId(int evaluationId) {
-        this.evaluationId = evaluationId;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getPieceId() {
-        return pieceId;
-    }
-
-    public void setPieceId(int pieceId) {
-        this.pieceId = pieceId;
     }
 }

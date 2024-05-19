@@ -8,7 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import main.util.DatabaseManager;
-import main.util.DatabaseSetup;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -18,69 +17,56 @@ public class Main extends Application {
     private static Stage stg;
     private static User currentUser;
     private static Profile currentProfile;
+    private static Piece currentPiece;
+    private static UserList currentList;
 
     public static void main(String[] args) {
-        DatabaseSetup.setupDatabase();
 
-        /*
-            De-comment this block for the first run of the application to create the database and setting up test data
-        DatabaseSetup.setupDatabase();
-        User user1 = new User("John@john.com", "Doe202202", "01/01/1990", "123456789", DatabaseManager.getSubscriptionID("Single Use"));
-        User user2 = new User("Jane@jane.com", "Doe202203", "01/01/1990", "987654321", DatabaseManager.getSubscriptionID("Two Simultaneous Uses"));
-        Subscription singleUse = new Subscription("Single Use");
-        Subscription twoSimultaneousUses = new Subscription("Two Simultaneous Uses");
-        Subscription fourSimultaneousUses = new Subscription("Four Simultaneous Uses");
-        singleUse.saveSubscription();
-        twoSimultaneousUses.saveSubscription();
-        fourSimultaneousUses.saveSubscription();
+        DatabaseManager.setupDatabase();
 
-         */
         Subscription singleUse = new Subscription("Single Use");
         singleUse.saveSubscription();
         Subscription twoSimultaneousUses = new Subscription("Two Simultaneous Uses");
         twoSimultaneousUses.saveSubscription();
         Subscription fourSimultaneousUses = new Subscription("Four Simultaneous Uses");
         fourSimultaneousUses.saveSubscription();
-        User user3 = new User("", "", "01/01/1990", "123456789", DatabaseManager.getSubscriptionID("Four Simultaneous Uses"));
-        user3.saveUser();
+
+        User user1 = new User("pape", "pape", "01/01/1990", "123456789", DatabaseManager.getSubscriptionID("Single Use"));
+        user1.saveUser();
+
         ArrayList<String> theDarkKnightActors = new ArrayList<>();
         theDarkKnightActors.add("Christian Bale");
         theDarkKnightActors.add("Heath Ledger");
         theDarkKnightActors.add("Aaron Eckhart");
         theDarkKnightActors.add("Maggie Gyllenhaal");
-
         Movies theDarkKnight = new Movies("Action", "The Dark Knight",
                 "Batman faces the Joker, who is causing chaos in Gotham City", "13", "2008", "2h32m", "Christopher Nolan", "theDarkKnight.jpg",
-                theDarkKnightActors, "94%", "https://www.youtube.com/watch?v=EXeTwQWrcwY", true);
+                theDarkKnightActors, "94%", "https://www.youtube.com/watch?v=EXeTwQWrcwY", true, "video.mp4");
 
         ArrayList<String> inceptionActors = new ArrayList<>();
         inceptionActors.add("Leonardo DiCaprio");
         inceptionActors.add("Joseph Gordon-Levitt");
         inceptionActors.add("Ellen Page");
         inceptionActors.add("Tom Hardy");
-
-        Movies inception = new Movies("Sci-Fi", "Inception",
-                "A thief who enters the dreams of others to steal their secrets", "13", "2010", "2h28m", "Christopher Nolan", "inception.jpg",
-                inceptionActors, "87%", "https://www.youtube.com/watch?v=YoHD9XEInc0", true);
+        Movies inception = new Movies("Sci-Fi", "Inception","A thief who enters the dreams of others to steal their secrets", "13", "2010", "2h28m", "Christopher Nolan", "inception.jpg",
+                inceptionActors, "87%", "https://www.youtube.com/watch?v=YoHD9XEInc0", true, "video.mp4");
 
         ArrayList <String> homeAloneActors = new ArrayList<>();
         homeAloneActors.add("Macaulay Culkin");
         homeAloneActors.add("Joe Pesci");
         homeAloneActors.add("Daniel Stern");
         homeAloneActors.add("Catherine O'Hara");
-
         Movies homeAlone = new Movies("Comedy", "Home Alone","An eight-year-old troublemaker, mistakenly left home alone, must defend his home against a pair of burglars on Christmas Eve.", "7", "1990", "1h43m", "Chris Columbus", "homealone.jpg", homeAloneActors, "80%",
-                "https://www.youtube.com/watch?v=CK2Btk6Ybm0", true);
+                "https://www.youtube.com/watch?v=CK2Btk6Ybm0", true, "video.mp4");
 
         ArrayList <String> breakingBadActors = new ArrayList<>();
         breakingBadActors.add("Bryan Cranston");
         breakingBadActors.add("Aaron Paul");
         breakingBadActors.add("Anna Gunn");
         breakingBadActors.add("Dean Norris");
-
         Series breakingBad = new Series("Drama", "Breaking Bad",
                 "A high school chemistry teacher turned meth producer", "18", "2008", "5 seasons", "Vince Gilligan", "breakingbad.jpeg", breakingBadActors, "96%",
-                "https://www.youtube.com/watch?v=HhesaQXLuRY", true);
+                "https://www.youtube.com/watch?v=HhesaQXLuRY", true, "video.mp4");
 
         ArrayList <String> theMandalorianActors = new ArrayList<>();
         theMandalorianActors.add("Pedro Pascal");
@@ -90,8 +76,7 @@ public class Main extends Application {
 
         Series theMandalorian = new Series("Sci-Fi", "The Mandalorian",
                 "A lone gunfighter makes his way through the outer reaches of the galaxy", "13", "2019", "2 seasons", "Jon Favreau", "themandalorian.jpg", theMandalorianActors, "93%",
-                "https://www.youtube.com/watch?v=eW7Twd85m2g", true);
-
+                "https://www.youtube.com/watch?v=eW7Twd85m2g", true, "video.mp4");
         ArrayList <String> familyReunionActors = new ArrayList<>();
         familyReunionActors.add("Tia Mowry-Hardrict");
         familyReunionActors.add("Anthony Alabi");
@@ -100,26 +85,22 @@ public class Main extends Application {
 
         Series familyReunion = new Series("Comedy", "Family Reunion",
                 "A family from Seattle moves to the South", "7", "2019", "3 seasons", "Meg DeLoatch", "familyreunion.jpeg", familyReunionActors, "90%",
-                "https://www.youtube.com/watch?v=kMuC1TJaCKE", false);
+                "https://www.youtube.com/watch?v=kMuC1TJaCKE", false, "video.mp4");
 
         Documentary planetEarth = new Documentary("Documentary", "Planet Earth", "A documentary series about the planet Earth", "13", "2006",
-                "1 season", "planetearth.jpg", "David Attenborough", "98%", "https://www.youtube.com/watch?v=aETNYyrqNYE", true);
-
+                "1 season", "planetearth.jpg", "David Attenborough", "98%", "https://www.youtube.com/watch?v=aETNYyrqNYE", true, "video.mp4");
         Documentary cosmos = new Documentary("Documentary", "Cosmos: A Spacetime Odyssey", "A documentary series about the universe", "13", "2014", "1 season",
-                "cosmos.jpg", "Neil deGrasse Tyson", "95%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", true);
-
+                "cosmos.jpg", "Neil deGrasse Tyson", "95%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", true, "video.mp4");
         Documentary catPeople = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "7", "2021", "1 season",
-                "catpeople.jpg", "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
+                "catpeople.jpg", "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false, "video.mp4");
         Documentary catPeople2 = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "19", "2021", "1 season",
-                "catpeople.jpg", "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
-
+                "catpeople.jpg", "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false, "video.mp4");
         Documentary catPeople3 = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "19", "2021", "1 season",
-                "catpeople.jpg", "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
+                "catpeople.jpg", "Glen Zipper", "85%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false, "video.mp4");
         Documentary catPeople4 = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "19", "2021", "1 season",
-                "catpeople.jpg", "Glen Zipper", "50%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
+                "catpeople.jpg", "Glen Zipper", "50%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false, "video.mp4");
         Documentary catPeople5 = new Documentary("Documentary", "Cat People", "A documentary series about people who love cats", "19", "2021", "1 season",
-                "catpeople.jpg", "Glen Zipper", "25%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false);
-
+                "catpeople.jpg", "Glen Zipper", "25%", "https://www.youtube.com/watch?v=I4Cv8XtHuZc", false, "video.mp4");
 
         theDarkKnight.saveMovie();
         inception.saveMovie();
@@ -134,6 +115,7 @@ public class Main extends Application {
         catPeople3.saveDocumentary();
         catPeople4.saveDocumentary();
         catPeople5.saveDocumentary();
+
 
         Season breakingBadSeason1 = new Season(7, breakingBad.getPiece_id());
         Season breakingBadSeason2 = new Season(13, breakingBad.getPiece_id());
@@ -155,31 +137,11 @@ public class Main extends Application {
                 theMandalorianSeason2.getId());
         Episode theMandalorianSeason2Episode2 = new Episode("Chapter 10: The Passenger", 41, theMandalorianSeason2.getId());
 
-        User user1 = new User("John", "Doe", "01/01/1990", "123456789", DatabaseManager.getSubscriptionID("Single Use"));
-        User user2 = new User("Jane", "Doe", "01/01/1990", "987654321", DatabaseManager.getSubscriptionID("Two Simultaneous Uses"));
-
-        UserList userList1 = new UserList(DatabaseManager.getUserID(user1.getLogin()), "Favorites");
-        UserList userList2 = new UserList(DatabaseManager.getUserID(user2.getLogin()), "Watch Later");
-
         Evaluation evaluation1 = new Evaluation(DatabaseManager.getUserID(user1.getLogin()), theDarkKnight.getPiece_id());
         Evaluation evaluation2 = new Evaluation(DatabaseManager.getUserID(user1.getLogin()), breakingBad.getPiece_id());
 
-        Evaluation evaluation3 = new Evaluation(DatabaseManager.getUserID(user2.getLogin()), inception.getPiece_id());
-        Evaluation evaluation4 = new Evaluation(DatabaseManager.getUserID(user2.getLogin()), theMandalorian.getPiece_id());
-
         evaluation1.setScore(5);
         evaluation2.setScore(4);
-
-        evaluation3.setScore(5);
-        evaluation4.setScore(4);
-
-        userList1.addPieceId(theDarkKnight.getPiece_id());
-        userList1.addPieceId(breakingBad.getPiece_id());
-
-        userList2.addPieceId(inception.getPiece_id());
-        userList2.addPieceId(theMandalorian.getPiece_id());
-        userList2.addPieceId(planetEarth.getPiece_id());
-        userList2.addPieceId(cosmos.getPiece_id());
 
         launch(args);
     }
@@ -227,5 +189,21 @@ public class Main extends Application {
 
     public static void setCurrentProfile(Profile currentProfile) {
         Main.currentProfile = currentProfile;
+    }
+
+    public static Piece getCurrentPiece() {
+        return currentPiece;
+    }
+
+    public static void setCurrentPiece(Piece currentPiece) {
+        Main.currentPiece = currentPiece;
+    }
+
+    public static UserList getCurrentList() {
+        return currentList;
+    }
+
+    public static void setCurrentList(UserList currentList) {
+        Main.currentList = currentList;
     }
 }

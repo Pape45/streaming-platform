@@ -11,29 +11,4 @@ public class Watching {
         this.pieceId = pieceId;
         this.position = position;
     }
-
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getPieceId() {
-        return pieceId;
-    }
-
-    public void setPieceId(int pieceId) {
-        this.pieceId = pieceId;
-    }
-
 }

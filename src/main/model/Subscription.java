@@ -33,12 +33,4 @@ public class Subscription {
             }
         }
     }
-
-    public String getSubscriptionName() {
-        return this.subscriptionName;
-    }
-
-    public void setSubscriptionName(String subscriptionName) {
-        this.subscriptionName = subscriptionName;
-    }
 }

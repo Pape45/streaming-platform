@@ -1,53 +1,42 @@
 package main.model;
 
+import main.util.DatabaseManager;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserList {
 
-    private static int userListCounter = 0;
-    private int userListId;
-
     private int userId;
-    private ArrayList<Integer> pieceId = new ArrayList<>();
+    private int pieceId;
     private String listName;
 
-    public UserList(int userId, String listName) {
+    public UserList(int userId, String listName, int pieceId) {
         this.userId = userId;
         this.listName = listName;
-        this.userListId = userListCounter++;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
+        this.pieceId = pieceId;
     }
 
     public String getListName() {
         return listName;
     }
 
-    public void setListName(String listName) {
-        this.listName = listName;
-    }
+    public void saveList() {
+        String query = "INSERT INTO UserList (userId, pieceId, listName) VALUES (?, ?, ?)";
 
-    public int getUserListId() {
-        return userListId;
-    }
+        try (Connection connection = DatabaseManager.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query)) {
 
-    public void setUserListId(int userListId) {
-        this.userListId = userListId;
-    }
+            statement.setInt(1, this.userId);
+            statement.setInt(2, this.pieceId);
+            statement.setString(3, this.listName);
 
-    public void addPieceId(int pieceId) {
-        this.pieceId.add(pieceId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Error saving user list");
+        }
     }
-
-    public List<Integer> getPieceList() {
-        return this.pieceId;
-    }
-
 }

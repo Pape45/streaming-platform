@@ -53,7 +53,7 @@ public class RegisterController {
             User user = new User(email.getText(), password.getText(), birthday.getValue().toString(), rib.getText(), subscriptionID);
             user.saveUser();
             Main.setCurrentUser(user);
-            m.changeScene("home");
+            m.changeScene("chooseSubscription");
         }
     }
 

@@ -1,10 +1,8 @@
 package main.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
@@ -18,10 +16,6 @@ import java.util.List;
 
 public class ChooseProfileController {
 
-    @FXML
-    private Button logout_btn;
-    @FXML
-    private Button createProfile_btn;
     @FXML
     private GridPane profileGrid;
     @FXML
@@ -83,4 +77,7 @@ public class ChooseProfileController {
             profileGrid.add(vBox, i % 2, i / 2);
         }
     }
+
+
+
 }
