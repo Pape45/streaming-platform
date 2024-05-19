@@ -9,8 +9,8 @@ import java.util.List;
 
 public class DatabaseManager {
     private static final String URL = "jdbc:mysql://localhost:3306/streaming_platform";
-    private static final String USERNAME = "test";
-    private static final String PASSWORD = "test1234";
+    private static final String USERNAME = "papi";
+    private static final String PASSWORD = "inuyascha45*";
 
     private static final String SETUP_QUERY =
             "DROP DATABASE IF EXISTS streaming_platform;" +
