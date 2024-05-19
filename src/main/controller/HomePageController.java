@@ -2,14 +2,17 @@ package main.controller;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 import main.Main;
 import main.model.*;
 import main.util.DatabaseManager;
@@ -36,11 +39,14 @@ public class HomePageController {
     private Button changeProfile_btn;
     @FXML
     private Button changeSubscription_btn;
+    @FXML
+    private Button list_btn;
 
     public void initialize() {
         movies_btn.setOnAction(event -> updateGridWithMovies());
         series_btn.setOnAction(event -> updateGridWithSeries());
         documentaries_btn.setOnAction(event -> updateGridWithDocumentaries());
+        scrollPane.setFitToWidth(true);
         updateGridWithMovies();
         updateProfile();
     }
@@ -90,6 +96,27 @@ public class HomePageController {
             ImageView imageView = new ImageView(image);
             imageView.setFitWidth(130);
             imageView.setFitHeight(180);
+
+            DropShadow shadow = new DropShadow();
+            shadow.setColor(Color.WHITE);
+            shadow.setRadius(20.0);
+            shadow.setSpread(0.2);
+
+            imageView.setOnMouseEntered(event -> {
+                imageView.setEffect(shadow);
+                imageView.setCursor(Cursor.HAND);
+            });
+
+            imageView.setOnMouseExited(event -> {
+                imageView.setEffect(null);
+                imageView.setCursor(Cursor.DEFAULT);
+            });
+
+            imageView.setOnMouseClicked(event -> {
+                Main.setCurrentPiece(piece);
+                Main m = new Main();
+                m.changeScene("videoPlayer");
+            });
 
             Label label = new Label(piece.getName());
             label.setStyle("-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: white;");
@@ -148,6 +175,12 @@ public class HomePageController {
     }
 
     public void changeSubscription() {
-        System.out.println("...");
+        Main m = new Main();
+        m.changeScene("changeSubscription");
+    }
+
+    public void showLists() {
+        Main m = new Main();
+        m.changeScene("userList");
     }
 }
